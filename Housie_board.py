@@ -19,28 +19,29 @@ all_num = (random.sample((range(0, 90)), 90))
 def callback(event):
     gen()
 
+
 def gen():
     curr_num = all_num[0] + 1
 
-    display_num = Label(screen, text=str(curr_num).zfill(2), font=('Arial', 25), fg='red', bg="#ADD8E6")
-    display_num.place(x=500, y=117)
-    display_num_font = tkFont.Font(family="Arial", size=25, weight="bold", slant="italic")
+    display_num = Label(screen, text=str(curr_num).zfill(2), font=('Arial', 30), fg='red', bg="#ADD8E6")
+    display_num.place(x=611, y=121)
+    display_num_font = tkFont.Font(family="Arial", size=30, weight="bold", slant="italic")
     display_num.configure(font=display_num_font)
 
     btn[all_num[0]]["bg"] = "#C0C0C0"
     btn[all_num[0]]["fg"] = "#CC5500"
 
-    engine = pyttsx3.init()\
-    ''' For voice'''
-    # voices = engine.getProperty('voices')
-    # engine.setProperty('voice', voices[0].id)
+    # For voice
+    '''engine = pyttsx3.init()
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice', voices[0].id)
     engine.setProperty('rate', 140)
     engine.say("The next number is" + str(curr_num))
-    engine.runAndWait()
+    engine.runAndWait()'''
 
     all_num.pop(0)
     if len(all_num) == 0:
-        game_over = Label(screen, text=str("GAME OVER"), font=('Arial', 50), fg='green', bg="#ADD8E6")
+        game_over = Label(screen, text=str("GAME OVER"), font=('Arial', 55, 'bold'), fg='green', bg="#ADD8E6")
         game_over.place(relx=0.5, rely=0.82, anchor='center')
 
 
@@ -60,13 +61,13 @@ t1.pack()
 t2 = Label(screen, text=str("Current Number is"), fg='black', background="#ADD8E6")
 t2.place(x=250, y=120)
 
-fontExample = tkFont.Font(family="Arial", size=20, weight="bold", slant="italic")
+fontExample = tkFont.Font(family="Arial", size=30, weight="bold", slant="italic")
 t2.configure(font=fontExample)
 
-button1 = Button(screen, text="Next Number", font=('Arial', 15), fg='black', background="#ADD8E6",
-                 activebackground="#ADD8E6", relief=GROOVE, command=gen)
-button1.bind("<Return>", callback)
-button1.place(x=1200, y=120)
+next_btn = Button(screen, text="Next Number", font=('Arial', 25, 'bold'), fg='black', background="#ADD8E6",
+                  activebackground="#ADD8E6", relief=GROOVE, command=gen)
+next_btn.bind("<Return>", callback)
+next_btn.place(x=1200, y=120)
 
 screen.bind('<Return>', callback)
 
