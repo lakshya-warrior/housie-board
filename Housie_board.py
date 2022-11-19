@@ -32,12 +32,13 @@ def gen():
     btn[all_num[0]]["fg"] = "#CC5500"
 
     # For voice
-    '''engine = pyttsx3.init()
+    
+    engine = pyttsx3.init()
     voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[0].id)
     engine.setProperty('rate', 140)
     engine.say("The next number is" + str(curr_num))
-    engine.runAndWait()'''
+    engine.runAndWait()
 
     all_num.pop(0)
     if len(all_num) == 0:
